@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Name Checker by Sneha</title>
+    <style>
+        * {
+            text-align: center;
+            font-size: 30px;
+            font-family: Cambria;
+        }
+        body {
+            background-color: lightgreen;
+        }
+  
+
+h1{background-color:black; color:white; width:70%; margin:auto; border-radius:30px;}
+
+
+        }
+	.btn{background-color:black; color:white;}
+	.btn:hover{background-color:white; color:black;}
+    </style>
+</head>
+<body>
+    <h1>Name Checker App</h1><br/>
+    
+    <form onsubmit=" change()">
+        <input type="text" id="name" placeholder="Enter your name" /><br /><br />
+        <input type="submit" value="Check" class=btn />
+    </form>
+
+    <h2 id="msg"></h2>
+
+    <script>
+        function change() {
+            event.preventDefault(); // Prevent form from refreshing
+
+            let name = document.getElementById("name");
+            let msg = document.getElementById("msg");
+
+            if (name.value === "") {
+                alert("Enter your name");
+                msg.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return false;
+            }
+
+            if (name.value.trim() === "") {
+                alert("Name cannot be blank space");
+                msg.innerHTML = "";
+                name.focus();
+                return false;
+            }
+
+            if (!name.value.match(/^[A-Za-z ]+$/)) {
+                alert("Name should contain only alphabets");
+                msg.innerHTML = "";
+                name.value = "";
+                name.focus();
+                return false;
+            }
+
+            let d = new Date();
+            let hr = d.getHours();
+            let greeting = "";
+
+            if (hr < 12) {
+                greeting = "Good Morning ";
+            } else if (hr < 16) {
+                greeting = "Good Afternoon ";
+            } else {
+                greeting = "Good Evening ";
+            }
+
+            msg.innerHTML = greeting + name.value;
+            return false; // Prevent form from submitting
+        }
+    </script>
+</body>
+</html>
